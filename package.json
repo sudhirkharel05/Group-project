@@ -1,0 +1,10 @@
+{
+    "name": "smart-road",
+    "version": "0.0.1",
+    "description": "Connecting the iot data to the database",
+    "dependencies": {
+        "express": "^4.17.1",
+        "serialport": "^9.0.7",
+        "socket.io": "^2.4.1"
+    }
+}

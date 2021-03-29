@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Lights</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/style.css">
+</head>
+<body style="background:#424242;">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #1a237e!important;">
+    <a class="navbar-brand" href="/">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" >
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/"><b>Home</b> </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/livecam">Survelliance</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white"  href="/parking">Parking</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+
+        <div class="container">
+        <div class="main"></div>
+        <div class="row mt-4">
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-top:none;">
+        <div> <img id="one" src="#"> </div>
+        </div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-top:none; border-left:none;"><div><img id="two" src="#"> </div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-top:none; border-left:none;"><div><img id="three" src="#"></div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-top:none; border-left:none;"><div><img id="four" src="#"> </div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-top:none; border-left:none;"><div><img id="five" src="#"> </div></div>
+      </div>
+
+              <div class="row mt-5"></div>
+              <div class="row mt-5">
+        <div class="col-sm" style="padding:50px; border:solid white 5px; border-bottom:none;"><div> <img id="six" src="#"></div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-bottom:none; border-left:none;"><div> <img id="seven" src="#"></div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-bottom:none; border-left:none;"><div> <img id="eight" src="#"></div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-bottom:none; border-left:none;"><div> <img id="nine" src="#"> </div></div>
+        <div class="col-sm " style="padding:50px; border:solid white 5px; border-bottom:none; border-left:none;"><div><img id="ten" src="#"> </div></div>
+      </div>
+    </div>
+
+    <div class="sound" ></div>
+</div>
+</div>
+<script>
+var socket = io();
+            socket.on('data', function(data){
+                var dataArr = data.split("-")
+                console.log(dataArr);
+               if (dataArr[3] == 10){
+             
+                const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "empty.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "empty.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "empty.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "empty.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "empty.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "empty.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+               }
+
+           else if (dataArr[3] == 9){
+             
+                const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "empty.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "empty.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "empty.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "empty.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "empty.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+               }
+
+
+              else if (dataArr[3] == 8){
+           
+                const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "empty.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                  const img4 = document.getElementById('four');
+                img4.setAttribute("src", "empty.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "empty.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "empty.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+               }
+              else if (dataArr[3] == 7){
+        
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                  const img4 = document.getElementById('four');
+                img4.setAttribute("src", "empty.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "empty.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "empty.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+               }
+
+                else if (dataArr[3] == 6){
+              
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+                 const image5 = document.getElementById("five");
+                image5.setAttribute("src", "empty.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "empty.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+
+
+               }
+
+               else if (dataArr[3] == 5){
+        
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "bugatti.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                 const image6 = document.getElementById("six");
+                image6.setAttribute("src", "empty.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+
+               }
+
+               else if (dataArr[3] == 4){
+              
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "bugatti.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "lambo.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                 const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "empty.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+
+               }
+
+               else if (dataArr[3] == 3){
+             
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "bugatti.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "lambo.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "corvette.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "empty.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+                
+
+               }
+
+                else if (dataArr[3] == 2){
+             
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "bugatti.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "lambo.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "ferarri.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "corvette.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                 const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "empty.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+               }
+
+                   else if (dataArr[3] == 1){
+            
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "bugatti.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "lambo.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "ferarri.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "corvette.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "lambo.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "empty.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+
+
+               }
+         else if (dataArr[3] == 0){
+            
+                 const image1 = document.getElementById('one');
+                 image1.setAttribute("src", "bugatti.png")
+                 image1.setAttribute("width", "100px")
+                 image1.setAttribute("height", "100px")
+
+               const img2 = document.getElementById('two');
+                img2.setAttribute("src", "lambo.png")
+                img2.setAttribute("width", "100px")
+                img2.setAttribute("height", "100px")
+
+               const img3 = document.getElementById('three');
+                img3.setAttribute("src", "corvette.png")
+                img3.setAttribute("width", "100px")
+                img3.setAttribute("height", "100px")
+
+                 const img4 = document.getElementById('four');
+                img4.setAttribute("src", "ferarri.png")
+                img4.setAttribute("width", "100px")
+                img4.setAttribute("height", "100px")
+
+               const image5 = document.getElementById("five");
+                image5.setAttribute("src", "bugatti.png")
+                image5.setAttribute("width", "100px")
+                image5.setAttribute("height", "100px")
+
+                const image6 = document.getElementById("six");
+                image6.setAttribute("src", "lambo.png")
+                image6.setAttribute("width", "100px")
+                image6.setAttribute("height", "100px")
+
+                  const image7 = document.getElementById("seven");
+                image7.setAttribute("src", "ferarri.png")
+                image7.setAttribute("width", "100px")
+                image7.setAttribute("height", "100px")
+
+                 const image8 = document.getElementById("eight");
+                image8.setAttribute("src", "corvette.png")
+                image8.setAttribute("width", "100px")
+                image8.setAttribute("height", "100px")
+
+                const image9 = document.getElementById("nine");
+                image9.setAttribute("src", "lambo.png")
+                image9.setAttribute("width", "100px")
+                image9.setAttribute("height", "100px")
+
+                 const image10 = document.getElementById("ten");
+                image10.setAttribute("src", "ferarri.png")
+                image10.setAttribute("width", "100px")
+                image10.setAttribute("height", "100px")
+               }
+
+                 
+              
+               
+            });</script
+         
+</body>
+</html>

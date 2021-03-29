@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smart Road Management</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body style="background: #b3e5fc;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #1a237e !important;">
+    <a class="navbar-brand" href="/">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" >
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/streetlights">Lights <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/livecam">Survelliance</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/parking">Parking</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+        <div class="container mt-lg-6 mt-5">
+            <div class="row">
+              <div class="col-lg-10 col-xl-8 mx-auto text-center pb-5">
+                <h1>Smart Traffic management System</h1>
+      
+                <h3 class="mt-5">
+                 Dashboard
+                </h3>
+                <p class="text-pink text-uppercase lead">
+
+                    <div id="sound">  </div>
+                </p>
+              </div>
+              <div class="bg-hover-white-smoke w-100 pointer" id="demo" onclick="myFunction()">
+                <div class="container">
+                  <div class="row py-4 align-items-center border-top clickable-row">
+                    <div class="col-md-10">
+                      <h3 class="h4 m-0">
+                        <img src="videoicon.png" alt="survelliance logo" width="10%" height="10%">
+                      </h3>
+                    </div>
+                    <div class="col-md-2" >
+                        <p class="m-0 text-pink text-uppercase"><a href="/livecam"> Make Survelliance Now</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-hover-white-smoke w-100 pointer" onclick="myparking()" >
+                <div class="container">
+                  <div class="row py-4 align-items-center border-top clickable-row">
+                    <div class="col-md-10">
+                      <h3 class="h4 m-0">
+                        <img src="parking.png" alt="parking logo" width="10%" height="10%">
+                      </h3>
+                    </div>
+                    <div class="col-md-2" >
+                      <p class="m-0 text-pink text-uppercase"><a href="livecam.html"> Look Parking slots</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-hover-white-smoke w-100 pointer" onclick="mystreet()">
+                <div class="container">
+                  <div class="row py-4 align-items-center border-top clickable-row">
+                    <div class="col-md-10">
+                      <h3 class="h4 m-0">
+                        <img src="street.png" alt="street light logo" width="10%" height="10%">
+                      </h3>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="m-0 text-pink text-uppercase"><a href="/streetlights"> Street Lights</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+          <script>
+            var socket = io();
+            socket.on('data', function(data){
+                let dataArr = data.split('-');
+                console.log(dataArr);
+                document.getElementById('sound').innerHTML= dataArr;
+        
+            });
+
+              function myFunction() {
+              window.location.href = "/livecam";
+              }
+
+              function mystreet(){
+                window.location.href = "/streetlights"
+              }
+
+              function myparking(){
+                window.location.href = "/parking"
+              }
+
+              
+        </script>
+
+    </body>
+</html>
